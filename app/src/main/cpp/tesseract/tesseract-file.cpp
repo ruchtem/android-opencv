@@ -1,11 +1,12 @@
-#include <jni.h>
-#include <string>
-
-extern "C"
-JNIEXPORT jstring JNICALL
-Java_com_example_moa_myjnitest_MainActivity_stringFromJNI(
-        JNIEnv* env,
-        jobject /* this */) {
-    std::string hello = "Hello from C++";
-    return env->NewStringUTF(hello.c_str());
+// A simple program that computes the square root of a number
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+ 
+double mysqrt (int value)
+{
+  fprintf(stdout,"mysqrt called!!");
+  double outputValue = sqrt(value);
+  fprintf(stdout,"The square root of");
+  return outputValue;
 }
