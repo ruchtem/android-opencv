@@ -5,10 +5,29 @@
 
 cmake_minimum_required(VERSION 3.4.1)
 
-# OpenCV stuff
-include_directories(/home/moa/Android/OpenCV-android-sdk-3.2/sdk/native/jni/include)
-add_library( lib_opencv SHARED IMPORTED )
-set_target_properties(lib_opencv PROPERTIES IMPORTED_LOCATION ${CMAKE_CURRENT_SOURCE_DIR}/src/main/jniLibs/${ANDROID_ABI}/libopencv_java3.so)
+## OPEN_CV ##
+
+include_directories(
+             # Path to the header files
+             /home/moa/Android/OpenCV-android-sdk-3.2/sdk/native/jni/include )
+
+add_library( # Name of the library
+             lib_opencv
+
+             # Set library as shared and imported
+             SHARED IMPORTED )
+
+# Define the import location for the library above
+
+set_target_properties(
+             # Specifies the target library
+             lib_opencv
+
+             # Specifies the parameter you want to define.
+             PROPERTIES IMPORTED_LOCATION
+
+             # Provides the path to the library you want to import.
+             ${CMAKE_CURRENT_SOURCE_DIR}/src/main/jniLibs/${ANDROID_ABI}/libopencv_java3.so)
 
 # Creates and names a library, sets it as either STATIC
 # or SHARED, and provides the relative paths to its source code.
