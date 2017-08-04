@@ -1,6 +1,9 @@
 package com.example.moa.myjnitest;
 
+import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -31,6 +34,24 @@ public class MainActivity extends AppCompatActivity {
     // Example of a call to a native method
     TextView tv = (TextView) findViewById(R.id.sample_text);
     tv.setText(stringFromJNI());
+
+
+        Bitmap.Config conf = Bitmap.Config.ARGB_8888;
+        Bitmap bitmap = Bitmap.createBitmap(100, 100, conf);
+        for (int x = 0; x < 30; x++) {
+            for (int y = 0; y < 30; y++) {
+                bitmap.setPixel(x, y, Color.rgb(100, 20, 200));
+            }
+        }
+        ImageView image1 = (ImageView) findViewById(R.id.image1);
+        image1.setImageBitmap(bitmap);
+
+        byte[] data = new byte[600];
+        for (int i = 0; i < data.length; i++) {
+            data[i] = (byte)(-120 + i / 2);
+        }
+
+        bitmapFromJNI(bitmap, data);
     }
 
     @Override
@@ -60,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
      * which is packaged with this application.
      */
     public native String stringFromJNI();
+
+    public native void bitmapFromJNI(Bitmap bitmap, byte[] data);
 
     // Used to load the 'native-lib' library on application startup.
     static {

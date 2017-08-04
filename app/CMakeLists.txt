@@ -63,6 +63,9 @@ find_library( # Sets the name of the path variable.
 target_link_libraries( # Specifies the target library.
                        native-lib
 
+                       # Enable bitmap support
+                       jnigraphics
+
                        # OpenCV lib
                        lib_opencv
 
