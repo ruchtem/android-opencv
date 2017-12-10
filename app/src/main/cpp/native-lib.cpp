@@ -23,8 +23,8 @@ Java_com_example_moa_myjnitest_MainActivity_bitmapFromJNI(JNIEnv *env, jclass ty
         return;
     }
 
-    if (info.format != ANDROID_BITMAP_FORMAT_RGB_565) {
-        LOGE("Bitmap format is not RGB_565 !");
+    if (info.format != ANDROID_BITMAP_FORMAT_RGBA_8888) {
+        LOGE("Bitmap format is not RGBA_8888 !");
         return;
     }
 
